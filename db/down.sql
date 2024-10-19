@@ -1,0 +1,12 @@
+-- Active: 1695848398724@@127.0.0.1@5433@is_work
+drop table request;
+drop table timetable;
+drop table busy_hours;
+drop table specialization_doctor;
+drop table doctors;
+drop table specializations;
+drop table clinics;
+drop table user_analysis;
+drop table analysis;
+drop table customers;
+drop table users;

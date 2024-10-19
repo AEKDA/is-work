@@ -49,7 +49,8 @@ create table doctors (
     id serial primary key,
     user_id integer not null REFERENCES users,
     description text,
-    name text,
+    first_name text,
+    last_name text,
     clinic_id int not null REFERENCES clinics
 );
 
@@ -82,5 +83,18 @@ create table request (
     "start" TIMESTAMP not null,
     "end" TIMESTAMP not null, 
     CHECK ("start" < "end"),
-    CHECK (EXTRACT(EPOCH FROM "end" - "start") > 3600)
+    CHECK (EXTRACT(EPOCH FROM "end" - "start") >= 3600)
+);
+
+create table chats(
+    id SERIAL PRIMARY KEY,
+    customer_id int not null REFERENCES customers,
+    clinic_id int not null REFERENCES clinics,
+    doctor_id int REFERENCES doctors
+);
+
+create table messages(
+    id SERIAL PRIMARY KEY,
+    message text not null,
+    chat_id int not null REFERENCES chats
 );
